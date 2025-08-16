@@ -7,6 +7,130 @@
 </head>
 <body>
     <h1>Hero Creation</h1>
+    <header>
+        <div class="wrap topbar">
+            <div class="brand">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true">
+                    <path d="M12 2l2.2 4.9 5.3.5-4 3.7 1.2 5.2L12 13.9 7.3 16.3 8.5 11 4.5 7.4l5.3-.5L12 2z"
+                        fill="#8b5cf6" />
+                </svg>
+                <div>
+                    <div class="title">HeroForge AI</div>
+                    <div class="badge">Superhero Generator • No login required</div>
+                </div>
+            </div>
+            <div class="actions">
+                <button id="btn-generate" class="btn-primary" title="Generate (g)">⚡ Generate</button>
+                <button id="btn-copy" class="btn-ghost" title="Copy (c)">📋 Copy</button>
+                <button id="btn-share" class="btn-ghost" title="Share">🔗 Share</button>
+                <button id="btn-download" class="btn-success" title="Download image (s)">🖼️ Download Card</button>
+                <button id="btn-reset" class="btn-danger" title="Reset">♻️ Reset</button>
+            </div>
+        </div>
+    </header>
     
+    <main>
+        <!-- Controls -->
+        <section class="panel" aria-labelledby="filters-hd">
+            <h2 id="filters-hd" class="hd">Filters</h2>
+            <div class="body">
+                <div class="controls">
+                    <div>
+                        <label for="powerType">Power Type</label>
+                        <select id="powerType">
+                            <option value="any">Any</option>
+                            <option value="tech">Tech</option>
+                            <option value="magic">Magic</option>
+                            <option value="mutant">Mutant</option>
+                            <option value="alien">Alien</option>
+                            <option value="cosmic">Cosmic</option>
+                            <option value="martial">Martial</option>
+                            <option value="gadgeteer">Gadgeteer</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="alignment">Alignment</label>
+                        <select id="alignment">
+                            <option value="any">Any</option>
+                            <option value="hero">Hero</option>
+                            <option value="antihero">Antihero</option>
+                            <option value="villain">Villain</option>
+                        </select>
+                    </div>
+                    <div class="row">
+                        <div>
+                            <label for="customSeed">Optional Seed (repeatable results)</label>
+                            <input id="customSeed" type="text" placeholder="e.g. starlight-wolf-77" />
+                        </div>
+                        <div>
+                            <label for="cardSize">Card Size</label>
+                            <select id="cardSize">
+                                <option value="1080x1350">IG Portrait (1080×1350)</option>
+                                <option value="1080x1920">TikTok/Reels (1080×1920)</option>
+                                <option value="1080x1080">Square (1080×1080)</option>
+                                <option value="1200x675">Twitter/X (1200×675)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="notes">Optional Notes (influence catchphrase/origin)</label>
+                        <textarea id="notes" rows="3"
+                            placeholder="e.g. loves neon synthwave, sworn protector of New Avalon"></textarea>
+                    </div>
+                    <div class="btns">
+                        <button id="btn-reroll-name" class="btn-ghost">🎲 Reroll Name</button>
+                        <button id="btn-reroll-power" class="btn-ghost">🎲 Reroll Powers</button>
+                        <button id="btn-reroll-all" class="btn-primary">🎲 Reroll All</button>
+                    </div>
+                    <div class="notice">Tips: Press <b>g</b> to generate, <b>c</b> to copy, <b>s</b> to save image. Your
+                        last hero auto-saves in your browser.</div>
+                </div>
+            </div>
+        </section>
+    
+        <!-- Output -->
+        <section class="panel">
+            <div class="body output">
+                <article class="card" aria-live="polite" aria-atomic="true">
+                    <div class="card-head">
+                        <div>
+                            <div class="name" id="heroName">—</div>
+                            <div class="tag align-hero" id="alignmentTag">Alignment: —</div>
+                        </div>
+                        <div class="tag" id="typeTag">Type: —</div>
+                    </div>
+                    <div class="grid">
+                        <div class="kv"><small>Superpower / Power Set</small>
+                            <div id="powers">—</div>
+                        </div>
+                        <div class="kv"><small>Nemesis</small>
+                            <div id="nemesis">—</div>
+                        </div>
+                        <div class="kv" style="grid-column:1/-1"><small>Origin Story</small>
+                            <div id="origin">—</div>
+                        </div>
+                        <div class="kv"><small>Catchphrase</small>
+                            <div id="catchphrase">—</div>
+                        </div>
+                        <div class="kv"><small>Costume Theme</small>
+                            <div id="costume">—</div>
+                        </div>
+                    </div>
+                    <div class="footer">
+                        <span class="notice" id="status">Ready.</span>
+                        <div class="actions">
+                            <button id="btn-permalink" class="btn-ghost">🔖 Permalink</button>
+                            <button id="btn-copy-json" class="btn-ghost">📦 Copy JSON</button>
+                        </div>
+                    </div>
+                </article>
+    
+                <div class="canvas-wrap">
+                    <canvas id="cardCanvas" width="1080" height="1350" aria-label="Downloadable hero card image"></canvas>
+                </div>
+            </div>
+        </section>
+    </main>
 </body>
 </html>
